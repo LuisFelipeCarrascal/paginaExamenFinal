@@ -9,11 +9,11 @@
 }
 
 :root{
-    --color_text-primary: #995d2d;
+    --color_text-primary: #804000;
     --color_text-secundary: #000;
     --color_text-tertiary: #000;
-    --main_color-primary: #9e6730;
-    --main_color-secundary: #6ebb9d;
+    --main_color-primary: #804000;
+    --main_color-secundary: #995d2d;
     --background-color: #fdfefe;
     --lowText_font_size: 16px;
     --text_size_title: 40px;
@@ -61,7 +61,7 @@ header{
 }
 
 .menu nav{
-    margin: 0px 120px;
+    margin: 0px 8px;
 }
 
 .menu nav ul{
@@ -82,6 +82,23 @@ header{
 .menu nav ul li a:hover{
     color: var(--color_text-primary);
 }
+
+.btn_quote{
+    display: block;
+    padding: 8px 40px;
+    border: 2px solid var(--color_text-primary);
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--color_text-tertiary);
+    margin: 0px 20px;
+    transition: all 300ms;
+}
+
+.btn_quote:hover{
+    color: white;
+    background: var(--color_text-primary);
+}
+
 
 .menu .socialMedia{
     margin: 0px 10px;

@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ 
+    :root {
+      --primary-color: #804000;   
+      --primary-hover: #995d2d;
+      --text-color: #333;
+      --input-border: #CCC;
+      --bg-form: #FFF;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #FFF;
+        color: var(--text-color);
+      }
+      
+      .login-section {
+        max-width: 360px;
+        margin: 80px auto;
+        background: var(--bg-form);
+        padding: 32px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        text-align: center;
+      }
+      
+      .login-section h1 {
+        margin-bottom: 24px;
+        font-size: 28px;
+        font-weight: 600;
+      }
+      
+      .login-section form input {
+        display: block;
+        width: 80%;
+        padding: 12px 16px;    
+        margin: 12px auto;     
+        font-size: 16px;
+        border: 1px solid var(--input-border);
+        border-radius: 6px;
+        transition: border-color 0.2s;
+      }
+      .login-section form input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+      
+      .login-section form button {
+        display: block;
+        width: 80%;
+        margin: 16px auto 0;   
+        padding: 12px 16px;    
+        font-size: 16px;
+        font-weight: 600;
+        color: #FFF;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .login-section form button:hover {
+        background-color: var(--primary-hover);
+      }
+      
+      .login-section p {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+      .login-section a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .login-section a:hover {
+        text-decoration: underline;
+      }
+
+      #go-home {
+        display: inline-block;
+        margin-top: 24px;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: #FFF;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      #go-home:hover {
+        background-color: var(--primary-hover);
+      }
