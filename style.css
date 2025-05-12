@@ -172,7 +172,7 @@ header{
 /*sobre nosotros*/
 .sobre-nosotros {
     display: flex;
-    background-color: var(--background-color); /* Fondo suave tipo Hydrant */
+    background-color: var(--background-color); 
     padding: 60px 0;
     align-items: center;
     justify-content: center;
@@ -208,4 +208,5 @@ header{
     height: 100%;
     max-height: 400px;
   }
-   
+
+  /*fin seccion sobre nosotro*/
