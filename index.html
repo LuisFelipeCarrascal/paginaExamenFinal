@@ -34,6 +34,11 @@
                 <!-- boton para registrarse-->
                 <a href="login.html" class="btn_quote">Login</a>
                 <!-- fin del boton -->
+                 <!-- Carrito -->
+                <div class="carrito-header" onclick="mostrarCarrito()">
+                    🛒 <span id="contador-carrito">0</span>
+                </div>
+                <!-- Fin Carrito -->
 
                 <!--Container Social Media-->
                 <div class="socialMedia">
@@ -56,6 +61,15 @@
         </div>
         <!--Fin del  Header - Container-->
     </header>
+    <!-- Ventana emergente del carrito -->
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarCarrito()">&times;</span>
+            <h2>Carrito de Compras</h2>
+            <ul id="lista-carrito"></ul>
+            <p><strong>Total:</strong> $<span id="total-carrito">0</span></p>
+        </div>
+    </div>
          <!--inicio-->
     <section class="inicio-section" id="inicio">
         <div class="inicio-content">
@@ -66,16 +80,62 @@
     </section>
         <!--fin parte de inicio-->
         <!--Sobre nosotros-->
-        <section class="sobre-nosotros" id="informacion">
-            <div class="sn-texto">
-                <h2>Sobre Nosotros</h2>
-                <p><strong>Stilmila</strong> es una marca comprometida con ofrecer ropa moderna, cómoda y de calidad. Nuestra misión es reflejar la personalidad de nuestros clientes a través del diseño y la innovación.</p>
-                <p>Desde nuestros inicios, hemos trabajado para que cada prenda sea única, con materiales seleccionados y atención al detalle.</p>
-            </div>
-            <div class="sn-imagen">
-              <img src="img/sobre_nosotros/img_sn.jpg" alt="equipo">
-            </div>
-        </section>
+    <section class="sobre-nosotros" id="informacion">
+        <div class="sn-texto">
+            <h2>Sobre Nosotros</h2>
+            <p><strong>Stilmila</strong> es una marca comprometida con ofrecer ropa moderna, cómoda y de calidad. Nuestra misión es reflejar la personalidad de nuestros clientes a través del diseño y la innovación.</p>
+            <p>Desde nuestros inicios, hemos trabajado para que cada prenda sea única, con materiales seleccionados y atención al detalle.</p>
+        </div>
+        <div class="sn-imagen">
+          <img src="img/sobre_nosotros/img_sn.jpg" alt="equipo">
+        </div>
+    </section>
         <!--Fin de la secion sobre nosotros-->
+    <section class="Productos-section">
+        <h2>Productos destacados</h2>
+
+    </section>
+
 </body>
+<script>
+  let carrito = [];
+  let contador = 0;
+
+  function agregarAlCarrito(nombre, precio) {
+    carrito.push({ nombre, precio });
+    contador++;
+    document.getElementById('contador-carrito').textContent = contador;
+  }
+
+  function mostrarCarrito() {
+    const lista = document.getElementById('lista-carrito');
+    const totalSpan = document.getElementById('total-carrito');
+    lista.innerHTML = '';
+    let total = 0;
+
+    carrito.forEach(producto => {
+      const item = document.createElement('li');
+      item.textContent = `${producto.nombre} - $${producto.precio.toLocaleString()}`;
+      lista.appendChild(item);
+      total += producto.precio;
+    });
+
+    totalSpan.textContent = total.toLocaleString();
+    document.getElementById('modal-carrito').style.display = 'block';
+  }
+
+  function cerrarCarrito() {
+    document.getElementById('modal-carrito').style.display = 'none';
+  }
+
+  // Cierra el modal si se hace clic fuera del contenido
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal-carrito');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
 </html>
