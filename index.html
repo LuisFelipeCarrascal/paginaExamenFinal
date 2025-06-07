@@ -25,9 +25,8 @@
                     <ul>
                         <li><a href="#inicio">inicio</a></li>
                         <li><a href="#informacion">Informacion</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
                         <li><a href="#productos">Productos</a></li>
-                        <li><a href="#compras">Compras</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </nav>
                 <!--Fin del Menu-->
@@ -90,11 +89,82 @@
           <img src="img/sobre_nosotros/img_sn.jpg" alt="equipo">
         </div>
     </section>
-        <!--Fin de la secion sobre nosotros-->
-    <section class="Productos-section">
-        <h2>Productos destacados</h2>
-
+        <!--Fin de la seccion sobre nosotros-->
+        <!--seccion productos-->
+    <section class="Productos-section" id="productos">
+        <h2>Nuestos Productos</h2>
+        <div class="productos-grid">
+            <div class="producto" data-nombre="Camiseta Clásica" data-precio="25">
+                <img src="img/productos/camiseta.jpg" alt="Camiseta Clásica">
+                <h3>Camiseta Clásica</h3>
+                <p>$25.00</p>
+                <button onclick="agregarAlCarrito('Camiseta Clásica', 25)">Agregar al carrito</button>
+            </div>
+            <div class="producto" data-nombre="Pantalón Deportivo" data-precio="40">
+                <img src="img/productos/pantalon.jpg" alt="Pantalón Deportivo">
+                <h3>Pantalón Deportivo</h3>
+                <p>$40.00</p>
+                <button onclick="agregarAlCarrito('Pantalón Deportivo', 40)">Agregar al carrito</button>
+            </div>
+        </div>
     </section>
+
+    <!--fin seccion productos-->
+    <!--seccion contacto-->
+    <section class="contacto-section" id="contacto">
+        <h2>Contáctanos</h2>
+        <div class="contacto-container">
+            <form class="formulario-contacto">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="mapa">
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.8462153394723!2d-74.08175458458647!3d4.609710143274591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99c5c8893a31%3A0x69db91f41c759c55!2sBogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1623434094217!5m2!1ses-419!2sco"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+<!--fin seccion contacto-->
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-contacto">
+                <h3>Contacto</h3>
+                <p>Email: lfcarrascalo@ufpso.edu.co</p>
+                <p>Teléfono: +57 123 456 7890</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#informacion">Información</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-redes">
+                <h4>Síguenos</h4>
+                <div class="footer-social-icons">
+                    <a href="#"><img src="img/redes_sociales/facebook.png" alt="Facebook" /></a>
+                    <a href="#"><img src="img/redes_sociales/instagram.png" alt="Instagram" /></a>
+                    <a href="#"><img src="img/redes_sociales/twitter.png" alt="Twitter" /></a>
+                    <a href="#"><img src="img/redes_sociales/youtube.png" alt="YouTube" /></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 <script>
@@ -102,7 +172,12 @@
   let contador = 0;
 
   function agregarAlCarrito(nombre, precio) {
-    carrito.push({ nombre, precio });
+    const existente = carrito.find(p => p.nombre === nombre);
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      carrito.push({ nombre, precio, cantidad: 1 });
+    }
     contador++;
     document.getElementById('contador-carrito').textContent = contador;
   }
@@ -113,22 +188,35 @@
     lista.innerHTML = '';
     let total = 0;
 
-    carrito.forEach(producto => {
+    carrito.forEach((producto, index) => {
       const item = document.createElement('li');
-      item.textContent = `${producto.nombre} - $${producto.precio.toLocaleString()}`;
+      item.innerHTML = `
+        ${producto.nombre} x${producto.cantidad} - $${(producto.precio * producto.cantidad).toLocaleString()}
+        <button onclick="restarDelCarrito(${index})" class="btn-eliminar">❌</button>
+      `;
       lista.appendChild(item);
-      total += producto.precio;
+      total += producto.precio * producto.cantidad;
     });
 
     totalSpan.textContent = total.toLocaleString();
     document.getElementById('modal-carrito').style.display = 'block';
   }
 
+  function restarDelCarrito(index) {
+    if (carrito[index].cantidad > 1) {
+      carrito[index].cantidad--;
+    } else {
+      carrito.splice(index, 1);
+    }
+    contador--;
+    document.getElementById('contador-carrito').textContent = contador;
+    mostrarCarrito(); 
+  }
+
   function cerrarCarrito() {
     document.getElementById('modal-carrito').style.display = 'none';
   }
 
-  // Cierra el modal si se hace clic fuera del contenido
   window.onclick = function(event) {
     const modal = document.getElementById('modal-carrito');
     if (event.target == modal) {
