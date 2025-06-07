@@ -15,19 +15,37 @@
                 <input type="text" name="last_name" placeholder="Apellido" required>
             </div>
 
+            <select name="type_document" required>
+                <option value="" disabled selected>Seleccione el tipo de documento</option>
+                <option value="cc">Cedula de ciudadania</option>
+                <option value="ti">Tarjeta de identidad</option>
+            </select>
+            <input type="text" name="document_number" placeholder="Numero de documento" required>
             <input type="email" name="email" placeholder="Correo electrónico" required>
             <input type="password" name="password" placeholder="Contraseña" required>
             <input type="date" name="dob" placeholder="Fecha de nacimiento" required>
             <select name="country" required>
                 <option value="" disabled selected>Selecciona tu país</option>
                 <option value="colombia">Colombia</option>
-                <option value="mexico">México</option>
-                <option value="espana">España</option>
                 <option value="argentina">Argentina</option>
                 <option value="chile">Chile</option>
             </select>
+            <select name="departament" >
+                <option value="" disabled selected>Seleccione su departamento</option>
+                <option value="norte de santanter">Norte de santander</option>
+                <option value="santander">Santander</option>
+                <option value="antioquia">Antioquia</option>
+            </select>
+            <select name="city" >
+                <option value="" disabled selected>Seleccione su ciudad</option>
+                <option value="cucuta">Cucuta</option>
+                <option value="ocaña">Ocaña</option>
+                <option value="medellin">Medellin</option>
+                <option value="bucaramanga">Bucaramanga</option>
+            </select>
             <input type="tel" name="phone" placeholder="Teléfono" required><br>
             <button type="submit">Registrarse</button>
+            <textarea name="coment" placeholder="Comenta aqui"></textarea>
         </form>
         <div class="footer">
             <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
