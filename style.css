@@ -115,7 +115,20 @@ header{
     cursor: pointer;
 }
 
-  .modal {
+.menu .socialMedia{
+    margin: 0px 10px;
+}
+
+.menu .socialMedia a{
+    margin: 0px 6px;
+}
+
+.menu .socialMedia img{
+    width: 20px;
+}
+/*fin header*/
+/*ventana emergente del carrito*/
+ .modal {
   display: none;
   position: fixed;
   z-index: 999;
@@ -166,21 +179,7 @@ header{
 .btn-eliminar:hover {
   color: darkred;
 }
-
-
-.menu .socialMedia{
-    margin: 0px 10px;
-}
-
-.menu .socialMedia a{
-    margin: 0px 6px;
-}
-
-.menu .socialMedia img{
-    width: 20px;
-}
-/*fin header*/
-
+/*fin ventana emergente*/
 /*inicio*/
 
 .inicio-section {
